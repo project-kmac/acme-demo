@@ -1,0 +1,6 @@
+## need JQ 
+ENV0_AGENT_KEY=
+ENV0_API_SECRET=
+ENV0_ORGANIZATION_ID=
+INSTALL=/opt/env0/
+HOME=/home/ubuntu

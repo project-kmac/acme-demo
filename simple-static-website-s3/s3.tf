@@ -8,7 +8,7 @@ resource "random_string" "random" {
 
 module "acme-s3" {
   source  = "terraform-aws-modules/s3-bucket/aws"
-  version = "2.2.0"
+  version = "3.3.0"
 
   bucket        = "${var.bucketname}-${random_string.random.id}"
   acl           = "public-read"
@@ -33,12 +33,12 @@ module "acme-s3" {
 
 module "s3-bucket_object" {
   source  = "terraform-aws-modules/s3-bucket/aws//modules/object"
-  version = "2.2.0"
+  version = "3.3.0"
 
   acl          = "public-read"
   content_type = "text/html"
   file_source  = "index.html"
   bucket       = module.acme-s3.s3_bucket_id
   key          = "index.html"
-  etag         = "${filemd5("index.html")}"
+  etag         = filemd5("index.html")
 }
